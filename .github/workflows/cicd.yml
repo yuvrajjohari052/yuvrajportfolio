@@ -1,0 +1,31 @@
+#create workflow
+name: CICD
+#when trigger
+on:
+  workflow_dispatch:
+
+jobs:
+  code:
+    runs-on: ubuntu-latest
+    steps:
+     - name: checkout code
+       run: echo "code clone from github"
+  
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: docker container
+        run: echo "docker container built."
+  
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: twst on docker ps
+        run: echo "code pass the test"
+    
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: deploy
+        run: echo "docker compose deploy the app"
+
