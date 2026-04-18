@@ -1,9 +1,13 @@
+#create workflow
 name: Hello Workflow
+# Triggering for run
 on:
   push:
     branches: [main]
 jobs:
+  #job1
   greet:
+    #runner for every job
     runs-on: ubuntu-latest
     steps:
       - name: say hello
