@@ -3,6 +3,16 @@ name: CICD
 #when trigger
 on:
   workflow_dispatch:
+    inputs:
+      environment:
+        description: this is enc value where workflows runs
+        default: 'dev'
+        required: true
+        type: choice
+        options:
+          - dev
+          - prod
+          - staging
 
 jobs:
   code:
@@ -27,6 +37,7 @@ jobs:
         run: echo "code pass the test"
     
   deploy:
+    if: inputs.environment == 'dev'
     needs: [code,build,test]
     runs-on: ubuntu-latest
     steps:
